@@ -91,6 +91,14 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# load all env variables into session from .env file
+# https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
+if [ -f .env ]; then
+    set -a
+    source .env
+    set +a
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export IGNITE_CACHE="$HOME/Library/Caches/ignite"
@@ -126,7 +134,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 source ~/.config/op/plugins.sh
 
 # 1Password https://developer.1password.com/docs/cli/get-started/#shell-completion
-eval "$(op completion zsh)"; compdef _op op
+eval "$(op completion zsh)"
+compdef _op op
 
 # https://developer.1password.com/docs/ssh/agent/compatibility#git-cli
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -138,4 +147,3 @@ export PATH=$PATH:$HOME/.maestro/bin
 
 # Github Next Copilot CLI
 eval "$(github-copilot-cli alias -- "$0")"
-
