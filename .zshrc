@@ -93,9 +93,9 @@ source $ZSH/oh-my-zsh.sh
 
 # load all env variables into session from .env file
 # https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
-if [ -f .env ]; then
+if [ -f ~/.env ]; then
     set -a
-    source .env
+    source ~/.env
     set +a
 fi
 
